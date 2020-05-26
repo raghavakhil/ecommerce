@@ -10,18 +10,18 @@ const Header = ({ currentUser }) => (
             <Logo className='logo'></Logo>
         </Link>
         <div className='options'>
-            <Link className='option' to='/shop'>
+            <Link className='options' to='/shop'>
                 SHOP
           </Link>
             <Link>
                 CONTACT
           </Link>
-          {
-              currentUser ?
-              <div className='options' onClick={() => auth.signOut()}>SIGN OUT</div>
-              :
-              <Link className='options' to='/signin'>SIGN IN</Link>
-          }
+            {
+                currentUser ?
+                    <div className='options' onClick={() => auth.signOut()}> SIGN OUT </div>
+                    :
+                    <Link className='options' to='/signin'>SIGN IN</Link>
+            }
         </div>
     </div>
 )
