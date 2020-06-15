@@ -4,14 +4,19 @@ import { createStructuredSelector } from 'reselect'
 
 import { toggleCartHidden } from '../../redux/cart/cart.actions'
 import { selectCartItemsCount, selectCartItems } from '../../redux/cart/cart.selectors'
+import { selectCurrentUser } from '../../redux/user/user.selector'
 
 import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg'
 import './cart-icon.styles.scss'
 
-const CartIcon = ({ toggleCartHidden, itemCount }) => (
+const CartIcon = ({ toggleCartHidden, itemCount, currentUser }) => (
     <div className='cart-icon' onClick={toggleCartHidden}>
         <ShoppingIcon className='shopping-icon' />
-        <span className='item-count'>{itemCount}</span>
+        {
+            currentUser ? (
+                <span className='item-count'>{itemCount}</span>)
+                : null
+        }
     </div>
 )
 
@@ -20,7 +25,8 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = createStructuredSelector({
-    itemCount: selectCartItemsCount
+    itemCount: selectCartItemsCount,
+    currentUser: selectCurrentUser
 })
 
 export default connect(mapStateToProps,
