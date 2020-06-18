@@ -18,24 +18,20 @@ const Header = ({ currentUser, hidden }) => (
             <Logo className='logo'></Logo>
         </Link>
         <div className='options'>
-            <Link className='option' to='/shop'>
-                SHOP
-          </Link>
-            <Link>
-                CONTACT
-          </Link>
+            <Link className='option' to='/shop'> SHOP </Link>
+            <Link> CONTACT </Link>
             {
                 currentUser ? (
                     <div className='option' onClick={() => auth.signOut()}>SIGN OUT</div>)
                     : (
                         <Link className='option' to='/signin'>SIGN IN</Link>
-                    )}
+                    )
+            }
             <CartIcon />
         </div>
         {
-            hidden ? null : <CartDropDown />
+            hidden ? null  : <CartDropDown />
         }
-
     </div>
 )
 const mapStateToProps = createStructuredSelector({

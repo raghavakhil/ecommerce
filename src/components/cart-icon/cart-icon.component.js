@@ -9,7 +9,8 @@ import { selectCurrentUser } from '../../redux/user/user.selector'
 import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg'
 import './cart-icon.styles.scss'
 
-const CartIcon = ({ toggleCartHidden, itemCount, currentUser }) => (
+const CartIcon = ({ toggleCartHidden, itemCount, currentUser }) => {
+    return(
     <div className='cart-icon' onClick={toggleCartHidden}>
         <ShoppingIcon className='shopping-icon' />
         {
@@ -18,8 +19,7 @@ const CartIcon = ({ toggleCartHidden, itemCount, currentUser }) => (
                 : null
         }
     </div>
-)
-
+)}
 const mapDispatchToProps = dispatch => ({
     toggleCartHidden: () => dispatch(toggleCartHidden())
 })
